@@ -1,4 +1,8 @@
-const express = require('express')
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config('./env')
+
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -10,9 +14,7 @@ app.get('/get-author',(req,res) => {
 	res.send("nat!")
 }
 
-app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Welcome to sagar-gavand.tech')
+app.listen(process.env.PORT, () => {
+	console.log('Server is listening on ' + process.env.PORT)
 })
 
-app.listen(process.env.PORT || 3000)
